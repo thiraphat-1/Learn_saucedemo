@@ -15,6 +15,23 @@ ${LOGIN_BUTTON}        id=login-button
 ${ERROR_MESSAGE}       class=error-message-container
 ${INVENTORY_PAGE}      //*[@id="inventory_container"]
 
+
+*** Keywords ***
+Login With Valid Credentials
+    [Documentation]    Keyword to login with valid credentials
+    Input Text    ${USERNAME_FIELD}    ${VALID_USERNAME}
+    Input Text    ${PASSWORD_FIELD}    ${VALID_PASSWORD}
+    Click Button    ${LOGIN_BUTTON}
+    Wait Until Element Is Visible    ${INVENTORY_PAGE}    timeout=5s
+
+Logout User
+    [Documentation]    Keyword to logout user
+    Click Button    id=react-burger-menu-btn
+    Wait Until Element Is Visible    id=logout_sidebar_link    timeout=5s
+    Click Link    id=logout_sidebar_link
+    Wait Until Element Is Visible    ${LOGIN_BUTTON}    timeout=5s
+
+
 *** Test Cases ***
 # Critical Test Cases
 TC_LOGIN_001_Login_With_Valid_Credentials
@@ -173,18 +190,3 @@ TC_LOGIN_014_Back_Button_After_Logout
     Go Back
     Element Should Be Visible    ${LOGIN_BUTTON}
     Close Browser
-
-*** Keywords ***
-Login With Valid Credentials
-    [Documentation]    Keyword to login with valid credentials
-    Input Text    ${USERNAME_FIELD}    ${VALID_USERNAME}
-    Input Text    ${PASSWORD_FIELD}    ${VALID_PASSWORD}
-    Click Button    ${LOGIN_BUTTON}
-    Wait Until Element Is Visible    ${INVENTORY_PAGE}    timeout=5s
-
-Logout User
-    [Documentation]    Keyword to logout user
-    Click Button    id=react-burger-menu-btn
-    Wait Until Element Is Visible    id=logout_sidebar_link    timeout=5s
-    Click Link    id=logout_sidebar_link
-    Wait Until Element Is Visible    ${LOGIN_BUTTON}    timeout=5s
