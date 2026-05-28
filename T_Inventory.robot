@@ -62,13 +62,13 @@ Get All Product Names
 # ==============================================================================
 # SECTION 1 : Positive / Negative Test Cases
 # ==============================================================================
-# TC001 แสดสินค้าทั้งหมดในหน้า Inventory ได้อย่างถูกต้อง
-#     [Documentation]     ตรวจสอบว่าหน้า Inventory แสดงสินค้าครบ 6 รายการหลังจาก Login สำเร็จ
-#     Navigate To Inventory
-#     ${items}=    Get WebElements    ${ITEM_NAMES}
-#     ${count}=    Get Length    ${items}
-#     Should Be Equal As Integers    ${count}    6
-#     ...    msg=คาดว่าจะมีสินค้า 6 รายการ แต่พบ ${count} รายการ
+TC001 แสดสินค้าทั้งหมดในหน้า Inventory ได้อย่างถูกต้อง
+    [Documentation]     ตรวจสอบว่าหน้า Inventory แสดงสินค้าครบ 6 รายการหลังจาก Login สำเร็จ
+    Navigate To Inventory
+    ${items}=    Get WebElements    ${ITEM_NAMES}
+    ${count}=    Get Length    ${items}
+    Should Be Equal As Integers    ${count}    6
+    ...    msg=คาดว่าจะมีสินค้า 6 รายการ แต่พบ ${count} รายการ
 
 TC-002 กรองสินค้าจาก A ถึง Z ได้ถูกต้อง
     [Documentation]    เลือก Sort "Name (A to Z)" แล้วตรวจสอบว่าสินค้าเรียงลำดับตัวอักษรจาก A ถึง Z ถูกต้อง
